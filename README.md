@@ -1,5 +1,7 @@
 # Web application for video streaming by Luka Kujundžić
-## This project was made as a part of "Development of web applications" course.
+## Project description
+The purpose of the project is to implement the Model-View-Controller design pattern and API endpoints for managing videos and users.
+This project was made as a part of "Development of web applications" course.
 
 ### The project consists of three modules:
   1. ASP.NET Core Web API application using Swagger UI for interacting with endpoints
