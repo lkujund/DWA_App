@@ -20,12 +20,12 @@ namespace Integration.Controllers
 
 
         [HttpGet("[action]")]
-        public ActionResult<IEnumerable<Genre>> GetAll()
+        public ActionResult<IEnumerable<BLGenre>> GetAll()
         {
             try
             {
                 var genres = _dbContext.Genres.Include("Videos");
-                return Ok(genres);
+                return Ok(GenreMapping.MapToBL(genres));
             }
             catch (Exception)
             {
@@ -46,7 +46,7 @@ namespace Integration.Controllers
                     return NotFound($"Could not find any genre with given id ({id})");
                 }
 
-                return Ok(dbGenre);
+                return Ok(GenreMapping.MapToBL(dbGenre));
             }
             catch (Exception)
             {
@@ -107,7 +107,7 @@ namespace Integration.Controllers
 
                 _dbContext.SaveChanges();
 
-                return Ok(dbGenre);
+                return Ok(GenreMapping.MapToBL(dbGenre));
             }
             catch (Exception)
             {

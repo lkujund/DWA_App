@@ -33,7 +33,7 @@ namespace Integration.Controllers
                     return NotFound($"Could not find any tags");
                 }
 
-                return Ok(dbTags);
+                return Ok(TagMapping.MapToBL(dbTags));
             }
             catch (Exception)
             {
@@ -55,7 +55,7 @@ namespace Integration.Controllers
                 }
 
 
-                return Ok(dbTag);
+                return Ok(TagMapping.MapToBL(dbTag));
             }
             catch (Exception)
             {
@@ -92,7 +92,7 @@ namespace Integration.Controllers
         }
 
         [HttpPut("{id}")]
-        public ActionResult<Tag> Put(int id, Tag tag)
+        public ActionResult<BLTag> Put(int id, BLTag tag)
         {
             try
             {
@@ -112,7 +112,7 @@ namespace Integration.Controllers
 
                 _dbContext.SaveChanges();
 
-                return Ok(dbTag);
+                return Ok(TagMapping.MapToBL(dbTag));
             }
             catch (Exception)
             {
@@ -123,7 +123,7 @@ namespace Integration.Controllers
         }
 
         [HttpDelete("{id}")]
-        public ActionResult<Tag> Delete(int id)
+        public ActionResult<BLTag> Delete(int id)
         {
             try
             {
@@ -140,7 +140,7 @@ namespace Integration.Controllers
 
                 _dbContext.SaveChanges();
 
-                return Ok(dbTag);
+                return Ok(TagMapping.MapToBL(dbTag));
             }
             catch (Exception)
             {

@@ -4,28 +4,28 @@ using Microsoft.EntityFrameworkCore.Metadata.Internal;
 
 namespace Integration.Mapping
 {
-    public class GenreMapping
+    public class CountryMapping
     {
-        public static IEnumerable<BLGenre> MapToBL(IEnumerable<Genre> genres) =>
-     genres.Select(x => MapToBL(x));
+        public static IEnumerable<BLCountry> MapToBL(IEnumerable<Country> countries) =>
+     countries.Select(x => MapToBL(x));
 
-        public static BLGenre MapToBL(Genre genre) =>
-            new BLGenre
+        public static BLCountry MapToBL(Country country) =>
+            new BLCountry
             {
-                Id = genre.Id,
-                Name = genre.Name,
-                Description = genre.Description
+                Id = country.Id,
+                Code= country.Code,
+                Name = country.Name
             };
 
-        public static IEnumerable<Genre> MapToDAL(IEnumerable<BLGenre> blGenres) 
-            => blGenres.Select(x => MapToDAL(x));
+        public static IEnumerable<Country> MapToDAL(IEnumerable<BLCountry> blCountries) 
+            => blCountries.Select(x => MapToDAL(x));
 
-        public static Genre MapToDAL(BLGenre genre) =>
-            new Genre
+        public static Country MapToDAL(BLCountry country) =>
+            new Country
             {
-                Id = genre.Id ?? 0,
-                Name = genre.Name,
-                Description = genre.Description
+                Id = country.Id ?? 0,
+                Code= country.Code,
+                Name = country.Name
             };
     }
 }

@@ -1,4 +1,5 @@
 ﻿using Integration.BLModels;
+using Integration.Mapping;
 using Integration.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -17,14 +18,14 @@ namespace Integration.Controllers
                 _dbContext = dbcontext;
             }
         [HttpGet("get")]
-        public ActionResult<IEnumerable<Country>> GetCountries()
+        public ActionResult<IEnumerable<BLCountry>> GetCountries()
         {
 
             try
             {
                 var dbCountries = _dbContext.Countries;
 
-                return Ok(dbCountries);
+                return Ok(CountryMapping.MapToBL(dbCountries));
             }
             catch (Exception)
             {
@@ -34,7 +35,7 @@ namespace Integration.Controllers
         }
 
         [HttpPost]
-        public ActionResult<Country> Post(BLCountry country)
+        public ActionResult<BLCountry> Post(BLCountry country)
         {
             try
             {

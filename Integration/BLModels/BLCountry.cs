@@ -2,7 +2,7 @@
 {
     public class BLCountry
     {
-        public int Id { get; set; }
+        public int? Id { get; set; }
 
         public string Code { get; set; } = null!;
 
